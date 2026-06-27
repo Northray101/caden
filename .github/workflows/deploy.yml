@@ -1,43 +1,30 @@
 name: Deploy to GitHub Pages
 
 # Publishes the static site to GitHub Pages on every push to main.
-# One-time setup: Settings → Pages → Source → "GitHub Actions".
+# Uses peaceiris/actions-gh-pages which pushes to a gh-pages branch.
+#
+# One-time setup after first run:
+#   Settings → Pages → Source → "Deploy from a branch"
+#   Branch: gh-pages  /  Folder: / (root)
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-# Permissions the official Pages deploy actions require.
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-# Only one deploy at a time; let an in-progress run finish.
-concurrency:
-  group: pages
-  cancel-in-progress: false
+  contents: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload site artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          # The whole repo is the site — no build step.
-          path: .
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          exclude_assets: '.github'
