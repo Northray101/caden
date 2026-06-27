@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caden — Chat</title>
+  <meta name="theme-color" content="#080b10" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/app.css" />
+</head>
+<body class="app">
+  <div class="app-shell" id="app-shell">
+
+    <!-- ===== Conversation rail ===== -->
+    <aside class="rail" aria-label="Conversations and navigation">
+      <a class="rail-brand" href="index.html" aria-label="Caden home">
+        <span class="dot dot--on dot--pulse" aria-hidden="true"></span>
+        Caden
+      </a>
+
+      <div class="rail-action">
+        <button class="btn btn--ghost btn--block" id="new-chat" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          New chat
+        </button>
+      </div>
+
+      <nav class="rail-nav" aria-label="Primary">
+        <a class="rail-link is-active" href="app.html" aria-current="page">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-6.5A8 8 0 1 1 21 12Z"/></svg>
+          Chat
+        </a>
+        <a class="rail-link" href="dashboard.html">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+          Dashboard
+        </a>
+      </nav>
+
+      <p class="rail-section-label">Recent</p>
+      <div class="convo-list" id="convo-list"><!-- rendered by chat.js --></div>
+
+      <div class="rail-foot">
+        <div class="user-chip">
+          <span class="user-avatar" aria-hidden="true">W</span>
+          <span>
+            <span class="user-name">Weston</span><br />
+            <span class="user-role">admin</span>
+          </span>
+        </div>
+        <button class="icon-btn" data-logout type="button" aria-label="Sign out" title="Sign out">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 4h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ===== Chat main ===== -->
+    <main class="chat">
+      <header class="chat-head">
+        <button class="icon-btn menu-toggle" id="menu-toggle" type="button" aria-label="Open conversations">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <div class="chat-head-title">
+          <h1 id="chat-title">Morning brief</h1>
+          <p class="chat-head-status">
+            <span class="dot dot--on" aria-hidden="true"></span>
+            Caden · online
+          </p>
+        </div>
+        <div class="chat-head-spacer"></div>
+      </header>
+
+      <div class="thread" id="thread">
+        <div class="thread-inner" id="thread-inner" role="log" aria-live="polite" aria-label="Conversation with Caden">
+          <!-- rendered by chat.js -->
+        </div>
+      </div>
+
+      <footer class="composer">
+        <div class="composer-inner">
+          <form id="composer" autocomplete="off">
+            <div class="composer-box">
+              <label class="sr-only" for="composer-input">Message Caden</label>
+              <textarea id="composer-input" rows="1" placeholder="Message Caden…"></textarea>
+              <button class="send-btn" id="send-btn" type="submit" aria-label="Send message" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l16-7-7 16-2-7-7-2Z"/></svg>
+              </button>
+            </div>
+          </form>
+          <p class="composer-hint">Caden is in demo mode — running on generated data until the local server is connected.</p>
+        </div>
+      </footer>
+    </main>
+
+    <div class="rail-scrim" id="rail-scrim" aria-hidden="true"></div>
+  </div>
+
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/chat.js"></script>
+</body>
+</html>
