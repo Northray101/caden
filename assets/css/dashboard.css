@@ -11,9 +11,7 @@
   overflow-y: auto;
   min-width: 0;
   min-height: 0;
-  background:
-    radial-gradient(60% 40% at 100% 0%, rgba(61,142,240,0.05), transparent 70%),
-    var(--bg);
+  background: var(--bg);
 }
 
 .dash-head {
@@ -26,8 +24,7 @@
   flex-wrap: wrap;
   padding: var(--s-4) var(--s-6);
   border-bottom: 1px solid var(--border);
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
-  backdrop-filter: blur(10px);
+  background: var(--bg);
 }
 .dash-head .menu-toggle { display: none; }
 .dash-title { margin-right: auto; }

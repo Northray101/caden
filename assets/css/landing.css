@@ -11,8 +11,7 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  backdrop-filter: blur(14px);
-  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 
@@ -67,19 +66,6 @@
   padding-block: clamp(var(--s-8), 12vw, var(--s-10)) var(--s-9);
 }
 
-/* faint awareness grid wash behind everything */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(120% 80% at 12% -10%, var(--accent-wash), transparent 55%),
-    linear-gradient(var(--border) 1px, transparent 1px) 0 0 / 100% 72px,
-    linear-gradient(90deg, var(--border) 1px, transparent 1px) 0 0 / 72px 100%;
-  opacity: 0.45;
-  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
-  pointer-events: none;
-}
 
 /* ambient oscilloscope baseline — the "always aware" signal (drawn by nav.js) */
 .hero-signal {
@@ -140,7 +126,7 @@
 .console {
   margin-top: var(--s-7);
   max-width: 540px;
-  background: linear-gradient(180deg, var(--surface) 0%, var(--bg-2) 100%);
+  background: var(--surface);
   border: 1px solid var(--border-strong);
   border-radius: var(--r);
   box-shadow: var(--shadow-soft);
@@ -249,9 +235,8 @@
               transform var(--dur) var(--ease);
 }
 .cap:hover {
-  border-color: var(--accent-line);
+  border-color: var(--border-strong);
   background: var(--surface-2);
-  transform: translateY(-2px);
 }
 .cap-top {
   display: flex;
@@ -264,8 +249,8 @@
   display: grid; place-items: center;
   border: 1px solid var(--border-strong);
   border-radius: var(--r-sm);
-  color: var(--accent);
-  background: var(--accent-wash);
+  color: var(--text-muted);
+  background: var(--surface-2);
 }
 .cap-icon svg { width: 20px; height: 20px; }
 .cap-tag {
@@ -287,19 +272,9 @@
    5. CTA band
    ---------------------------------------------------------- */
 .cta {
-  position: relative;
-  overflow: hidden;
   border-top: 1px solid var(--border);
 }
-.cta::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(80% 120% at 50% 120%, var(--accent-wash), transparent 60%);
-  pointer-events: none;
-}
 .cta .container {
-  position: relative;
   text-align: center;
   display: flex;
   flex-direction: column;

@@ -69,8 +69,9 @@ body.app { overflow: hidden; }
 .rail-link svg { width: 17px; height: 17px; flex: 0 0 auto; }
 .rail-link:hover { background: var(--surface); color: var(--text); }
 .rail-link.is-active {
-  background: var(--accent-wash);
-  color: var(--accent-bright);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: inset 2px 0 0 var(--accent);
 }
 
 .rail-section-label {
@@ -151,9 +152,9 @@ body.app { overflow: hidden; }
 .user-avatar {
   width: 30px; height: 30px;
   border-radius: var(--r-sm);
-  background: var(--accent-wash);
-  border: 1px solid var(--accent-line);
-  color: var(--accent-bright);
+  background: var(--surface-3);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
   display: grid; place-items: center;
   font-family: var(--font-mono);
   font-size: var(--t-small);
@@ -185,9 +186,7 @@ body.app { overflow: hidden; }
   flex-direction: column;
   min-width: 0;
   min-height: 0;
-  background:
-    radial-gradient(70% 50% at 50% 0%, rgba(61,142,240,0.05), transparent 70%),
-    var(--bg);
+  background: var(--bg);
 }
 
 .chat-head {
@@ -196,8 +195,7 @@ body.app { overflow: hidden; }
   gap: var(--s-3);
   padding: var(--s-4) var(--s-5);
   border-bottom: 1px solid var(--border);
-  background: color-mix(in srgb, var(--bg) 80%, transparent);
-  backdrop-filter: blur(10px);
+  background: var(--bg);
 }
 .chat-head .menu-toggle { display: none; }
 .chat-head-title { min-width: 0; }
@@ -266,8 +264,8 @@ body.app { overflow: hidden; }
   display: grid;
   place-items: center;
   background: var(--surface-2);
-  border: 1px solid var(--accent-line);
-  color: var(--accent);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
 }
 .msg-avatar svg { width: 16px; height: 16px; }
 
@@ -301,15 +299,15 @@ body.app { overflow: hidden; }
   margin-top: 6px;
 }
 
-/* user message: right aligned, accent tint, no avatar */
+/* user message: right aligned, slightly elevated surface */
 .msg--user {
   flex-direction: row-reverse;
   margin-left: auto;
 }
 .msg--user .msg-body { display: flex; flex-direction: column; align-items: flex-end; }
 .msg--user .msg-bubble {
-  background: var(--accent-wash);
-  border-color: var(--accent-line);
+  background: var(--surface-2);
+  border-color: var(--border-strong);
   border-radius: var(--r);
   border-top-right-radius: var(--r-sm);
 }
