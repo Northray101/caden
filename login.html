@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign in — Caden</title>
+  <meta name="description" content="Sign in to your Caden system." />
+  <meta name="theme-color" content="#080b10" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/global.css" />
+</head>
+<body>
+  <main class="auth">
+    <section class="auth-card" role="form" aria-labelledby="auth-title">
+      <a class="auth-mark" href="index.html" aria-label="Caden home">
+        <span class="dot dot--on dot--pulse" aria-hidden="true"></span>
+        Caden
+      </a>
+
+      <h1 class="auth-title" id="auth-title">Sign in</h1>
+      <p class="auth-sub">Remote access to your system. Local devices on the home
+        network connect without signing in.</p>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="username">Username</label>
+          <input id="username" name="username" type="text" autocomplete="username"
+                 placeholder="admin" required autofocus />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password"
+                 autocomplete="current-password" placeholder="••••••••" required />
+        </div>
+
+        <p class="auth-error" id="auth-error" role="alert" aria-live="assertive">
+          <span aria-hidden="true">✕</span>
+          That username and password don't match. Try again.
+        </p>
+
+        <div class="field">
+          <button class="btn btn--primary btn--block" type="submit">
+            Sign in <span class="arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+      </form>
+
+      <p class="auth-hint">
+        Demo access — <code>admin</code> / <code>caden2025</code>
+      </p>
+    </section>
+  </main>
+
+  <script src="assets/js/auth.js"></script>
+  <script>
+    /* Login glue: wires the form to auth.js. If a session already
+       exists, skip the gate and go straight to the app. */
+    (function () {
+      if (typeof isAuthed === "function" && isAuthed()) {
+        window.location.replace("app.html");
+        return;
+      }
+
+      const form = document.getElementById("login-form");
+      const error = document.getElementById("auth-error");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const user = document.getElementById("username").value.trim();
+        const pass = document.getElementById("password").value;
+
+        // login() redirects on success; only the failure path returns here.
+        if (!login(user, pass)) {
+          error.classList.add("is-visible");
+          document.getElementById("password").value = "";
+          document.getElementById("password").focus();
+        }
+      });
+
+      // Clear the error the moment the user starts correcting it.
+      form.addEventListener("input", function () {
+        error.classList.remove("is-visible");
+      });
+    })();
+  </script>
+</body>
+</html>

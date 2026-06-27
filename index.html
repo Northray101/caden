@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caden — Always on. Always aware.</title>
+  <meta name="description" content="Caden is a personal home AI system that runs 24/7 on your own hardware. It monitors what matters, reaches you when it counts, and keeps your data home." />
+  <meta name="theme-color" content="#080b10" />
+
+  <!-- Fonts: Syne (display), DM Sans (prose), IBM Plex Mono (system voice) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/landing.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Top navigation ===== -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="wordmark" href="index.html" aria-label="Caden home">
+        <span class="dot dot--on dot--pulse" aria-hidden="true"></span>
+        Caden
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#capabilities">Capabilities</a>
+        <a href="#how">How it works</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn--primary" href="login.html" data-open-caden>
+          Open Caden <span class="arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== Hero ===== -->
+    <section class="hero">
+      <canvas class="hero-signal" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <p class="eyebrow hero-eyebrow reveal">
+          <span class="dot dot--on dot--pulse" aria-hidden="true"></span>
+          System online · 6 agents reporting
+        </p>
+        <h1 class="reveal">Caden</h1>
+        <p class="hero-tagline reveal">Always on. <span class="em">Always aware.</span></p>
+        <p class="hero-lead reveal">
+          A personal home AI that lives on your own hardware. Caden runs every
+          hour of every day — watching what matters, thinking a step ahead, and
+          reaching you only when it counts.
+        </p>
+        <div class="hero-actions reveal">
+          <a class="btn btn--primary" href="login.html" data-open-caden>
+            Open Caden <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="btn btn--ghost" href="#capabilities">See what it does</a>
+        </div>
+
+        <!-- Signature: a live readout of Caden's presence -->
+        <div class="console reveal" role="img" aria-label="Live system readout: orchestrator online, six agents running, last heartbeat seconds ago.">
+          <div class="console-bar">
+            <span class="dot dot--on" aria-hidden="true"></span>
+            <span>caden · system</span>
+          </div>
+          <div class="console-body" aria-hidden="true">
+            <div class="console-line"><span class="glyph">›</span><span>orchestrator brain&nbsp;&nbsp;<span class="val">online</span></span></div>
+            <div class="console-line"><span class="glyph">›</span><span>agents&nbsp;&nbsp;<span class="val">6 running</span> · 0 errors</span></div>
+            <div class="console-line"><span class="glyph">›</span><span>monitor&nbsp;&nbsp;scanning <span class="val" id="scan-counter">1,204</span> signals</span></div>
+            <div class="console-line"><span class="glyph">›</span><span>heartbeat&nbsp;&nbsp;<span class="val" id="hb-counter">3s</span> ago<span class="console-cursor"></span></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Statement ===== -->
+    <section class="statement section">
+      <div class="container">
+        <p class="eyebrow eyebrow--muted statement-label">What Caden is</p>
+        <p>
+          Your home, always aware.
+          <span class="dim">Caden runs continuously in the background, monitors the
+          things you care about, remembers your context, and decides on its own
+          when something is worth telling you. No app to open. No question to ask first.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Capabilities ===== -->
+    <section class="capabilities section" id="capabilities">
+      <div class="container">
+        <div class="head">
+          <div>
+            <p class="eyebrow reveal">Capabilities</p>
+            <h2 class="reveal">Built to be present, not summoned.</h2>
+          </div>
+          <p class="reveal">Six things Caden does without being asked — the difference
+            between a chatbot and a presence.</p>
+        </div>
+
+        <div class="cap-grid">
+          <!-- Always On -->
+          <article class="cap reveal">
+            <div class="cap-top">
+              <span class="cap-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6"/><path d="M5.6 6.6a8 8 0 1 0 12.8 0"/></svg>
+              </span>
+              <span class="cap-tag">uptime</span>
+            </div>
+            <h3>Always on</h3>
+            <p>Caden never sleeps. It monitors, schedules, and acts while you're
+              away, asleep, or busy — twenty-four hours a day.</p>
+          </article>
+
+          <!-- Proactive -->
+          <article class="cap reveal">
+            <div class="cap-top">
+              <span class="cap-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 6 4-14 2 8h6"/></svg>
+              </span>
+              <span class="cap-tag">signal</span>
+            </div>
+            <h3>Proactive</h3>
+            <p>It decides what matters and reaches out first. You hear about the
+              things that count before you think to ask.</p>
+          </article>
+
+          <!-- Personalized -->
+          <article class="cap reveal">
+            <div class="cap-top">
+              <span class="cap-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6"/></svg>
+              </span>
+              <span class="cap-tag">memory</span>
+            </div>
+            <h3>Personalized</h3>
+            <p>Caden learns your context, your people, and your patterns — and
+              keeps every conversation within reach.</p>
+          </article>
+
+          <!-- Self-managing -->
+          <article class="cap reveal">
+            <div class="cap-top">
+              <span class="cap-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.1-2.1Z"/></svg>
+              </span>
+              <span class="cap-tag">repair</span>
+            </div>
+            <h3>Self-managing</h3>
+            <p>It watches its own health, schedules its own work, and repairs
+              itself when something breaks — before you notice.</p>
+          </article>
+
+          <!-- Multi-device -->
+          <article class="cap reveal">
+            <div class="cap-top">
+              <span class="cap-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4" width="13" height="9" rx="1.5"/><rect x="17" y="8" width="4.5" height="11" rx="1.2"/><path d="M6 17h5"/></svg>
+              </span>
+              <span class="cap-tag">reach</span>
+            </div>
+            <h3>Multi-device</h3>
+            <p>The same Caden on the kitchen kiosk, your phone, and any browser
+              on the network. One mind, every screen.</p>
+          </article>
+
+          <!-- Private -->
+          <article class="cap reveal">
+            <div class="cap-top">
+              <span class="cap-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-3 8-7 10-4-2-7-5.6-7-10V6l7-3Z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
+              </span>
+              <span class="cap-tag">local</span>
+            </div>
+            <h3>Private</h3>
+            <p>Everything runs on hardware you own. Your data stays in the house.
+              Nothing leaves except the prompt.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== How it works ===== -->
+    <section class="statement section" id="how">
+      <div class="container">
+        <p class="eyebrow eyebrow--muted statement-label">How it works</p>
+        <p>
+          One orchestrator. A pool of specialised agents.
+          <span class="dim">A News Monitor scans every fifteen minutes. A Self-Check
+          agent runs hourly. A Repair agent audits from a second machine. They report
+          to the brain, the brain decides, and the brain reaches you — through the
+          dashboard, a kiosk, or a message.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta section">
+      <div class="container">
+        <p class="eyebrow reveal">Phase one · web frontend</p>
+        <h2 class="reveal">Set up Caden.</h2>
+        <p class="reveal">The interface is here. Point it at your own server and Caden
+          comes alive on your hardware. The backend integration is in development.</p>
+        <div class="cta-actions reveal">
+          <a class="btn btn--primary" href="https://github.com/northray101/caden" target="_blank" rel="noopener">
+            Set up Caden <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="btn btn--ghost" href="login.html" data-open-caden>Open the dashboard</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="wordmark" href="index.html">
+        <span class="dot dot--on" aria-hidden="true"></span>
+        Caden
+      </a>
+      <p class="footer-meta">
+        <span>Always on. Always aware.</span>
+        <span class="sep" aria-hidden="true">/</span>
+        <span>© 2026</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/nav.js"></script>
+</body>
+</html>

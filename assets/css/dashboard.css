@@ -1,0 +1,335 @@
+/* ============================================================
+   Caden — dashboard.css
+   Admin dashboard content. Builds on the shared shell + rail
+   defined in app.css. All data is mocked by dashboard.js.
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   1. Dashboard main (scrolls inside the fixed shell)
+   ---------------------------------------------------------- */
+.dash {
+  overflow-y: auto;
+  min-width: 0;
+  min-height: 0;
+  background:
+    radial-gradient(60% 40% at 100% 0%, rgba(61,142,240,0.05), transparent 70%),
+    var(--bg);
+}
+
+.dash-head {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+  padding: var(--s-4) var(--s-6);
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(10px);
+}
+.dash-head .menu-toggle { display: none; }
+.dash-title { margin-right: auto; }
+.dash-title h1 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.dash-title .sub {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+}
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--t-small);
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-sm);
+  padding: 8px 12px;
+  transition: border-color var(--dur) var(--ease), color var(--dur) var(--ease), background var(--dur) var(--ease);
+}
+.action-btn:hover { border-color: var(--accent-line); color: var(--text); background: var(--surface-2); }
+.action-btn svg { width: 15px; height: 15px; }
+
+/* ----------------------------------------------------------
+   2. Content grid
+   ---------------------------------------------------------- */
+.dash-body { padding: var(--s-6); }
+
+.dash-section { margin-bottom: var(--s-7); }
+.dash-section > .eyebrow { margin-bottom: var(--s-4); display: flex; }
+
+.dash-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: var(--s-5);
+  align-items: start;
+}
+@media (max-width: 1040px) {
+  .dash-cols { grid-template-columns: 1fr; }
+}
+
+.col-stack { display: flex; flex-direction: column; gap: var(--s-5); }
+
+/* ----------------------------------------------------------
+   3. Panel
+   ---------------------------------------------------------- */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+.panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-4) var(--s-5);
+  border-bottom: 1px solid var(--border);
+}
+.panel-head h2 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+.panel-head .meta {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+
+/* ----------------------------------------------------------
+   4. System status cards
+   ---------------------------------------------------------- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-4);
+}
+@media (max-width: 900px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .stat-grid { grid-template-columns: 1fr; } }
+
+.stat {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: var(--s-5);
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: var(--s-3);
+  font-variant-numeric: tabular-nums;
+}
+.stat-sub {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin-top: var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--t-small);
+  color: var(--text-muted);
+}
+
+/* ----------------------------------------------------------
+   5. Agents list
+   ---------------------------------------------------------- */
+.agent {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: 14px var(--s-5);
+  border-bottom: 1px solid var(--border);
+}
+.agent:last-child { border-bottom: none; }
+.agent-id { min-width: 0; flex: 1; }
+.agent-name { font-size: 0.92rem; color: var(--text); font-weight: 500; }
+.agent-role {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  color: var(--text-dim);
+  margin-top: 1px;
+}
+.agent-seen {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  color: var(--text-dim);
+  text-align: right;
+  flex: 0 0 auto;
+}
+
+/* ----------------------------------------------------------
+   6. Status pills
+   ---------------------------------------------------------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.pill .dot { width: 6px; height: 6px; box-shadow: none; }
+.pill--ok   { color: var(--ok);   border-color: color-mix(in srgb, var(--ok) 35%, transparent);   background: var(--ok-wash); }
+.pill--warn { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 35%, transparent); background: var(--warn-wash); }
+.pill--err  { color: var(--err);  border-color: color-mix(in srgb, var(--err) 35%, transparent);  background: var(--err-wash); }
+
+/* ----------------------------------------------------------
+   7. Scheduled tasks table
+   ---------------------------------------------------------- */
+.task-table { width: 100%; }
+.task-table thead th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 500;
+  padding: 10px var(--s-5);
+  border-bottom: 1px solid var(--border);
+}
+.task-table tbody td {
+  padding: 13px var(--s-5);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  vertical-align: middle;
+}
+.task-table tbody tr:last-child td { border-bottom: none; }
+.task-table tbody tr:hover { background: var(--surface-2); }
+.task-table .t-name { color: var(--text); font-weight: 500; }
+.task-table .t-mono { font-family: var(--font-mono); font-size: var(--t-small); color: var(--text-muted); }
+.task-table .t-next { color: var(--accent-bright); }
+@media (max-width: 560px) {
+  .task-table .hide-sm { display: none; }
+}
+
+/* ----------------------------------------------------------
+   8. Live log feed
+   ---------------------------------------------------------- */
+.log-feed {
+  height: 340px;
+  overflow-y: auto;
+  padding: var(--s-3) 0;
+  font-family: var(--font-mono);
+  font-size: var(--t-small);
+}
+.log-line {
+  display: grid;
+  grid-template-columns: 64px 56px 1fr;
+  gap: var(--s-3);
+  padding: 4px var(--s-5);
+  line-height: 1.5;
+  animation: msg-in 0.3s var(--ease-out);
+}
+.log-line:hover { background: var(--surface-2); }
+.log-time { color: var(--text-dim); }
+.log-msg { color: var(--text-muted); word-break: break-word; }
+.lvl {
+  font-size: var(--t-mono);
+  letter-spacing: 0.06em;
+  text-align: center;
+  align-self: start;
+  padding: 1px 0;
+  border-radius: 4px;
+}
+.lvl--info  { color: var(--accent-bright); }
+.lvl--warn  { color: var(--warn); }
+.lvl--error { color: var(--err); }
+.lvl--ok    { color: var(--ok); }
+
+/* ----------------------------------------------------------
+   9. Notifications queue
+   ---------------------------------------------------------- */
+.notif {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  padding: 14px var(--s-5);
+  border-bottom: 1px solid var(--border);
+}
+.notif:last-child { border-bottom: none; }
+.notif-channel {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  background: var(--accent-wash);
+  border: 1px solid var(--accent-line);
+  border-radius: var(--r-sm);
+  padding: 4px 8px;
+  flex: 0 0 auto;
+  min-width: 70px;
+  text-align: center;
+}
+.notif-body { min-width: 0; flex: 1; }
+.notif-to { font-size: 0.88rem; color: var(--text); }
+.notif-preview {
+  font-size: var(--t-small);
+  color: var(--text-dim);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.notif-status {
+  font-family: var(--font-mono);
+  font-size: var(--t-mono);
+  color: var(--text-dim);
+  flex: 0 0 auto;
+  align-self: center;
+}
+
+/* Empty state for cleared logs */
+.empty {
+  padding: var(--s-7);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--t-small);
+  color: var(--text-dim);
+}
+
+@media (max-width: 860px) {
+  .dash-head .menu-toggle { display: grid; }
+}
